@@ -109,39 +109,39 @@ export default function Home() {
       <section className="flex flex-col items-center space-y-8">
 
         {/* Header */}
-        <div className="flex items-stretch justify-between p-2 w-3xl">
+        <div className="flex flex-col-reverse md:flex-row items-center md:items-stretch justify-between gap-6 p-2 w-full max-w-3xl">
 
-          <div className="flex flex-col space-y-1.5">
+          <div className="flex flex-col space-y-3 text-center md:text-left">
             {/* General */}
-            <h1 className="text-4xl font-bold">Alireza Rezapour</h1>
-            <p className="text-[16px] text-black/80 max-w-max">Software Engineer / Backend Developer focused on Node.j & Golang</p>
+            <h1 className="text-3xl md:text-4xl font-bold">Alireza Rezapour</h1>
+            <p className="text-[14px] md:text-[16px] text-black/80">Software Engineer</p>
 
             {/* Fact Section */}
-            <div className="grid grid-cols-2 text-[15px] gap-2 m-auto">
+            <div className="grid grid-cols-2 text-[12px] md:text-[15px] gap-2">
               <div className="p-1 border-b-2 cursor-pointer">📍 Based in Mashhad, Iran</div>
-              <div className="p-1 border-b-2">🎮 Interests: Gaming, Music, Walking</div>
+              <div className="p-1 border-b-2">🎮 Gaming, Music, Walking</div>
               <div className="p-1 border-b-2">💼 Currently at Hamtapay</div>
               <div className="p-1 border-b-2">🛠 Always chasing better code</div>
             </div>
 
             {/* Link Section */}
-            <div className="flex gap-3 mt-auto">
+            <div className="flex justify-center md:justify-start gap-1.5 md:gap-3 mt-auto">
               <a
                 href="mailto:alireza.rezapour.me@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Gmail"
-                className="flex items-center border-2 text-black px-4 rounded hover:bg-red-200 duration-300 cursor-pointer"
+                className="flex items-center border-2 text-black px-2 md:px-4 py-1.5 md:py-2 rounded hover:bg-red-200 duration-300 cursor-pointer"
               >
-                <img src="/assets/gmail.png" height={22} width={22} alt="Gmail" />
+                <img src="/assets/gmail.png" className="w-5 h-5 md:w-[22px] md:h-[22px]" alt="Gmail" />
               </a>
 
               <a
                 href="tel:+989962496521"
                 title="Phone"
-                className="flex items-center border-2 text-black px-4 py-2 rounded hover:bg-indigo-200 duration-300 cursor-pointer"
+                className="flex items-center border-2 text-black px-2 md:px-4 py-1.5 md:py-2 rounded hover:bg-indigo-200 duration-300 cursor-pointer"
               >
-                <img src="/assets/phone.png" height={22} width={22} alt="Phone" />
+                <img src="/assets/phone.png" className="w-5 h-5 md:w-[22px] md:h-[22px]" alt="Phone" />
               </a>
 
               <a
@@ -149,9 +149,9 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="LinkedIn"
-                className="flex items-center border-2 text-black px-4 py-2 rounded hover:bg-green-200 duration-300 cursor-pointer"
+                className="flex items-center border-2 text-black px-2 md:px-4 py-1.5 md:py-2 rounded hover:bg-green-200 duration-300 cursor-pointer"
               >
-                <img src="/assets/linkedin.png" height={22} width={22} alt="LinkedIn" />
+                <img src="/assets/linkedin.png" className="w-5 h-5 md:w-[22px] md:h-[22px]" alt="LinkedIn" />
               </a>
 
               <a
@@ -159,9 +159,9 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Github"
-                className="flex items-center border-2 gap-2 text-black px-4 py-2 rounded hover:bg-fuchsia-200 duration-300 cursor-pointer"
+                className="flex items-center border-2 text-black px-2 md:px-4 py-1.5 md:py-2 rounded hover:bg-fuchsia-200 duration-300 cursor-pointer"
               >
-                <img src="/assets/github.png" height={22} width={22} alt="Github" />
+                <img src="/assets/github.png" className="w-5 h-5 md:w-[22px] md:h-[22px]" alt="Github" />
               </a>
 
               <a
@@ -169,9 +169,9 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Download CV"
-                className="flex items-center border-2 gap-2 text-black px-4 py-2 rounded hover:bg-amber-200 duration-300 cursor-pointer"
+                className="flex items-center border-2 text-black px-2 md:px-4 py-1.5 md:py-2 rounded hover:bg-amber-200 duration-300 cursor-pointer"
               >
-                <img src="/assets/folder.png" height={22} width={22} alt="CV" />
+                <img src="/assets/folder.png" className="w-5 h-5 md:w-[22px] md:h-[22px]" alt="CV" />
               </a>
 
               <a
@@ -179,22 +179,22 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Medium"
-                className="flex items-center border-2 gap-2 px-4 py-2 rounded hover:bg-blue-200 duration-300 cursor-pointer"
+                className="flex items-center border-2 px-2 md:px-4 py-1.5 md:py-2 rounded hover:bg-blue-200 duration-300 cursor-pointer"
               >
-                <img src="/assets/medium.png" height={22} width={22} alt="Medium" />
+                <img src="/assets/medium.png" className="w-5 h-5 md:w-[22px] md:h-[22px]" alt="Medium" />
               </a>
             </div>
           </div>
 
-          <div className="rounded overflow-hidden shadow shadow-gray-700">
-            <img src="/images/avatar-3.jpg" height={200} width={200} alt="Avatar" />
+          <div className="w-32 h-32 md:w-[200px] md:h-[200px] rounded-full md:rounded overflow-hidden shadow shadow-gray-700 shrink-0">
+            <img src="/images/avatar-3.jpg" className="w-full h-full object-cover" alt="Avatar" />
           </div>
         </div>
 
         {/* About Me */}
-        <section className="flex flex-col items-stretch justify-center p-2 w-3xl space-y-1.5 border-gray-600 border-0 border-dashed hover:bg-gray-200 rounded cursor-pointer duration-200">
-          <h1 className="text-2xl">About Me</h1>
-          <p className="text-black/80">
+        <section className="flex flex-col items-stretch justify-center p-2 w-full max-w-3xl space-y-1.5 border-gray-600 border-0 border-dashed hover:bg-gray-200 rounded cursor-pointer duration-200">
+          <h1 className="text-xl md:text-2xl">About Me</h1>
+          <p className="text-sm md:text-base text-black/80 text-justify">
             A passionate software engineer looking for building reliable, maintainable, and high-performance services.
             I work with Node.js and Golang to build scalable, maintainable systems that meet evolving business requirements. I thrive on solving complex problems, guiding architectural decisions, mentoring team members, and optimizing development processes for efficiency and reliability.
           </p>
@@ -202,21 +202,21 @@ export default function Home() {
 
 
         {/* Experience */}
-        <section className="flex flex-col items-stretch justify-center p-2 w-3xl gap-4 space-y-1.5 border-gray-600 border-0 border-dashed">
-          <h1 className="text-2xl">Work Experience</h1>
+        <section className="flex flex-col items-stretch justify-center p-2 w-full max-w-3xl gap-4 space-y-1.5 border-gray-600 border-0 border-dashed">
+          <h1 className="text-xl md:text-2xl">Work Experience</h1>
           {
             experiences.map((ex, idx) => {
               return (
                 <div key={idx} className="hover:bg-gray-200 rounded cursor-pointer duration-200 p-2">
-                  <div className="flex items-stretch justify-between">
-                    <a href={ex.link} target="_blank" rel="noopener noreferrer" className="flex text-lg text-blue-700 hover:underline">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                    <a href={ex.link} target="_blank" rel="noopener noreferrer" className="text-base md:text-lg text-blue-700 hover:underline">
                       {ex.company}
                     </a>
-                    <p className="text-sm text-gray-500">{ex.period}</p>
+                    <p className="text-xs md:text-sm text-gray-500">{ex.period}</p>
                   </div>
 
-                  <h4 className="font-mono text-sm text-gray-500">{ex.role} • {ex.location}</h4>
-                  <div className="text-sm mt-2 ml-0.5">{ex.description}</div>
+                  <h4 className="font-mono text-xs md:text-sm text-gray-500">{ex.role} • {ex.location}</h4>
+                  <div className="text-xs md:text-sm mt-2 ml-0.5 text-justify">{ex.description}</div>
                 </div>
               )
             })
@@ -225,13 +225,13 @@ export default function Home() {
 
 
         {/* Skills */}
-        <section className="p-4 w-3xl">
-          <h1 className="text-2xl font-semibold mb-3">Skills</h1>
-          <div className="grid sm:grid-cols-2 gap-4">
+        <section className="p-2 md:p-4 w-full max-w-3xl">
+          <h1 className="text-xl md:text-2xl font-semibold mb-3">Skills</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {skills.map(({ category, items }, i) => (
               <div key={i} className="hover:bg-gray-200 rounded cursor-pointer duration-200 p-2">
-                <p className="text-lg font-medium mb-2">{category}</p>
-                <p className="text-sm text-gray-700">
+                <p className="text-base md:text-lg font-medium mb-2">{category}</p>
+                <p className="text-xs md:text-sm text-gray-700">
                   {items.map(item => item.name).join(", ")}
                 </p>
               </div>
