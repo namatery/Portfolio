@@ -217,7 +217,7 @@ export default function Home() {
           <h1 className="text-2xl font-semibold mb-3">Skills</h1>
           <div className="grid sm:grid-cols-2 gap-4">
             {skills.map(({ category, items }, i) => (
-              <div key={i}>
+              <div key={i} className="hover:bg-gray-200 rounded cursor-pointer duration-200 p-2">
                 <p className="text-lg font-medium mb-2">{category}</p>
                 <p className="text-sm text-gray-700">
                   {items.map(item => item.name).join(", ")}
