@@ -187,7 +187,7 @@ export default function Home() {
           </div>
 
           <div className="rounded overflow-hidden shadow shadow-gray-700">
-            <img src="/images/avatar.png" height={200} width={200} alt="Avatar" />
+            <img src="/images/avatar-3.jpg" height={200} width={200} alt="Avatar" />
           </div>
         </div>
 
