@@ -8,6 +8,7 @@ const skills = [
       { name: "Golang", icon: "/assets/go.png" },
       { name: "Nestjs", icon: "/assets/nestjs.png" },
       { name: "Fastify", icon: "/assets/fastify.png" },
+      { name: "Adonisjs", icon: "/assets/adonisjs.png" },
     ]
   },
   {
@@ -17,7 +18,8 @@ const skills = [
       { name: "Mysql", icon: "/assets/mysql.png" },
       { name: "Postgresql", icon: "/assets/postgresql.png" },
       { name: "Mongodb", icon: "/assets/mongodb.png" },
-      { name: "Influxdb", icon: "/assets/influxdb.png" }
+      { name: "Influxdb", icon: "/assets/influxdb.png" },
+      { name: "Clickhouse", icon: "/assets/clickhouse.png" }
     ]
   },
   {
@@ -38,6 +40,8 @@ const skills = [
       { name: "CI/CD", icon: "/assets/github-actions.png" },
       { name: "Git", icon: "/assets/git.png" },
       { name: "Linux", icon: "/assets/linux.png" },
+      { name: "Kong", icon: "/assets/kong.png" },
+      { name: "PeerDB", icon: "/assets/peerdb.png" },
     ]
   },
   {
@@ -63,13 +67,21 @@ const skills = [
 
 const experiences = [
   {
+    company: "Hamtapay",
+    link: "https://hamtapay.net",
+    role: "Software Engineer",
+    location: "Mashhad, Iran",
+    period: "Aug 2025 – Present",
+    description: "Maintained and enhanced microservices in a high-traffic cryptocurrency exchange platform. Implemented Domain-Driven Design (DDD) and asynchronous architecture to improve scalability and resilience.\n\nDesigned and implemented caching strategies for critical microservices, reducing database load from 500 req/sec to 20 req/sec and significantly boosting performance.\n\nDeveloped AI-driven automation tools based on company requirements to streamline internal processes.\n\nMaintained and developed custom Kong API gateway extensions using Go.\n\nMigrated and optimized admin panel queries to a data warehouse, improving query efficiency and reporting capabilities."
+  },
+  {
     company: "Part Software Group",
     link: 'https://partsoftware.com',
     role: "Software Engineer",
     location: "Mashhad, Iran",
     period: "Apr 2024 – Aug 2025",
     description:
-      "As a Backend Engineer, I led cross-team recovery efforts during critical production outages, achieving a 70% reduction in MTTR. I optimized key workflows to cut latency by 60% and spearheaded the re-architecture of core services, enabling faster deployments and reduced technical debt. I also authored over 10 RFCs that influenced company-wide architecture standards and mentored new hires to streamline onboarding."
+      "As a Software Engineer, I led cross-team recovery efforts during critical production outages, achieving a 70% reduction in MTTR. I optimized key workflows to cut latency by 60% and spearheaded the re-architecture of core services, enabling faster deployments and reduced technical debt. I also authored over 10 RFCs that influenced company-wide architecture standards and mentored new hires to streamline onboarding."
   },
   {
     company: "Forvest",
