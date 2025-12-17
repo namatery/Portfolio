@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const skills = [
   {
     category: "Languages & Frameworks",
@@ -103,6 +107,24 @@ const experiences = [
 ];
 
 export default function Home() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      setShowScrollTop(scrollPosition > pageHeight * 0.5);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <main className="container relative mx-auto overflow-auto md:p-16 p-4 text-[#000000]">
 
@@ -239,6 +261,18 @@ export default function Home() {
           </div>
         </section>
       </section >
+
+      {/* Mobile Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 md:hidden w-11 h-11 rounded-full bg-white text-black flex items-center justify-center shadow-lg shadow-black/20 border border-gray-300"
+          aria-label="Scroll to top"
+        >
+          <img src="/assets/arrow-up.svg" className="w-5 h-5 md:w-[22px] md:h-[22px]" alt="Arrow Up" />
+        </button>
+      )}
 
     </main >
   );
