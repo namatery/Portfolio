@@ -214,7 +214,7 @@ export default function Home() {
         </div>
 
         {/* About Me */}
-        <section className="flex flex-col items-stretch justify-center p-2 w-full max-w-3xl space-y-1.5 border-gray-600 border-0 border-dashed hover:bg-gray-200 rounded cursor-pointer duration-200">
+        <section className="flex flex-col items-stretch justify-center p-2 w-full max-w-3xl space-y-1.5 border-gray-600 border-0 border-dashed md:hover:bg-gray-200 rounded cursor-pointer duration-200">
           <h1 className="text-xl md:text-2xl">About Me</h1>
           <p className="text-sm md:text-base text-black/80 text-justify">
             A passionate software engineer looking for building reliable, maintainable, and high-performance services.
@@ -229,8 +229,8 @@ export default function Home() {
           {
             experiences.map((ex, idx) => {
               return (
-                <div key={idx} className="hover:bg-gray-200 rounded cursor-pointer duration-200 p-2">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                <div key={idx} className="md:hover:bg-gray-200 rounded cursor-pointer duration-200 p-2">
+                  <div className="flex flex-row items-center justify-between gap-1">
                     <a href={ex.link} target="_blank" rel="noopener noreferrer" className="text-base md:text-lg text-blue-700 hover:underline">
                       {ex.company}
                     </a>
@@ -251,7 +251,7 @@ export default function Home() {
           <h1 className="text-xl md:text-2xl font-semibold mb-3">Skills</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {skills.map(({ category, items }, i) => (
-              <div key={i} className="hover:bg-gray-200 rounded cursor-pointer duration-200 p-2">
+              <div key={i} className="md:hover:bg-gray-200 rounded cursor-pointer duration-200 p-2">
                 <p className="text-base md:text-lg font-medium mb-2">{category}</p>
                 <p className="text-xs md:text-sm text-gray-700">
                   {items.map(item => item.name).join(", ")}
