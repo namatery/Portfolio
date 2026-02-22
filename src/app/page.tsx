@@ -177,7 +177,7 @@ export default function Home() {
               </a>
 
               <a
-                href="https://github.com/alireza12prom"
+                href="https://github.com/namatery"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Github"
