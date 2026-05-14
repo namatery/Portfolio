@@ -167,6 +167,23 @@ const experiences = [
   }
 ];
 
+const featuredProjects = [
+  {
+    name: "Criterio",
+    link: "https://criterio.uk/",
+    description: "AI assistant for UK mortgage brokers: natural-language Q&A over 50+ lender criteria docs with multi-turn memory and cited answers. AI-labeled chunk retrieval, <3% hallucination, sub-60s latency. Daily auto-published lending-news blog with generated imagery.",
+    language: "Python",
+    tech: ["LangGraph", "LangChain", "FastAPI", "OpenAI", "OpenRouter", "SQLite", "RAG"]
+  },
+  {
+    name: "Sekebit",
+    link: "https://sekebit.com/",
+    description: "Persian-language fintech: automated trading bot for global markets plus self-custody crypto wallet with fee-free internal transfers. Android app on Café Bazaar, Myket, APK.",
+    language: "TypeScript",
+    tech: ["Trading Bot", "Crypto Wallet", "Real-time Streaming", "Microservices", "Android"]
+  }
+];
+
 const projects = [
   {
     name: "multer-minio",
@@ -406,6 +423,55 @@ export default function Home() {
         {/* Projects */}
         <section className="flex flex-col items-stretch justify-center w-full max-w-3xl gap-3">
           <h1 className="text-xl md:text-2xl font-semibold">Projects</h1>
+
+          {/* Featured (closed source) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {featuredProjects.map((fp, idx) => (
+              <a
+                key={idx}
+                href={fp.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col p-4 border rounded-lg md:hover:bg-gray-50 hover:border-gray-400 duration-200"
+              >
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <span className="text-sm md:text-base font-semibold text-blue-700 hover:underline truncate">
+                    {fp.name}
+                  </span>
+                  <div className="flex items-center gap-2 text-xs shrink-0">
+                    <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200 font-mono text-[10px] md:text-xs">
+                      Closed Source
+                    </span>
+                    <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200 font-mono text-[10px] md:text-xs">
+                      Live
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs md:text-sm text-gray-700 flex-1 mb-3">{fp.description}</p>
+
+                <div className="flex flex-wrap items-center gap-2 mt-auto">
+                  <span className="flex items-center gap-1 text-xs text-gray-700">
+                    <span
+                      className={`w-2.5 h-2.5 rounded-full ${languageColors[fp.language] ?? "bg-gray-400"}`}
+                    />
+                    {fp.language}
+                  </span>
+                  {fp.tech.map((t, i) => (
+                    <span
+                      key={i}
+                      className="text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-gray-100 text-gray-700 border border-gray-200"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {/* Other projects */}
+          <h2 className="text-sm md:text-base font-medium text-gray-600 mt-2">Other Projects</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {projects.map((p, idx) => (
               <a
