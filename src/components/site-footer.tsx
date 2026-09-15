@@ -1,21 +1,38 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
 export function SiteFooter() {
+  const isArticlesPage = usePathname() === "/blog/";
+  console.log(usePathname());
   return (
     <footer className="site-footer">
       <div className="container-shell footer-grid">
         <div className="footer-content">
-          <h2 className="footer-title">Let&rsquo;s talk</h2>
+          <h2 className="footer-title">
+            {isArticlesPage ? "Enjoyed these notes?" : "Let’s talk"}
+          </h2>
           <div className="footer-copy">
-            <p>
-              I&rsquo;m open to conversations around backend engineering, remote
-              opportunities, developer infrastructure, and interesting technical
-              products.
-            </p>
-            <p>The easiest way to reach me is by email.</p>
+            {isArticlesPage ? (
+              <p>
+                I&rsquo;m always open to interesting conversations &mdash; whether
+                it&rsquo;s about engineering, new opportunities, or just a friendly
+                chat.
+              </p>
+            ) : (
+              <>
+                <p>
+                  I&rsquo;m open to conversations around backend engineering, remote
+                  opportunities, developer infrastructure, and interesting technical
+                  products.
+                </p>
+                <p>The easiest way to reach me is by email.</p>
+              </>
+            )}
           </div>
           <ul className="footer-links" aria-label="Contact links">
             <li>
@@ -48,7 +65,7 @@ export function SiteFooter() {
           >
             AR.
           </Link>
-          <span>© {new Date().getFullYear()} Alireza Rezapour</span>
+          <span>© {new Date().getFullYear()} Alireza Rezapour. All rights reserved.</span>
         </div>
         <nav
           className="footer-bottom-links"
