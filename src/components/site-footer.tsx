@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "@/components/icons";
+import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
 export function SiteFooter() {
@@ -23,7 +23,8 @@ export function SiteFooter() {
                 className="footer-link-primary"
                 href={`mailto:${profile.email}`}
               >
-                Send me an email <ArrowUpRight className="size-3.5" />
+                Send me an email
+                <ArrowUpRight aria-hidden="true" className="size-3.5" />
               </a>
             </li>
           </ul>

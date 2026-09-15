@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "@/components/icons";
+import { ArrowUpRight } from "lucide-react";
 import { formatPostDate, type Post } from "@/lib/posts";
 
 type PostListProps = {
@@ -32,7 +32,7 @@ export function PostList({ posts }: PostListProps) {
                 ))}
               </ul>
               <Link aria-label={`Read ${post.title}`} href={postHref}>
-                <ArrowUpRight className="size-5" />
+                <ArrowUpRight aria-hidden="true" className="size-5" />
               </Link>
             </div>
           </article>

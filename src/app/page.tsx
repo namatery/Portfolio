@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "@/components/icons";
-import { BlogEmpty } from "@/components/blog-empty";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { LatestPosts } from "@/components/latest-posts";
 import { profile } from "@/data/portfolio";
+import { getAllPosts } from "@/lib/posts";
 
 export default function Home() {
+  const latestPosts = getAllPosts().slice(0, 3);
+
   return (
     <main>
       <section className="container-shell hero">
@@ -20,7 +23,8 @@ export default function Home() {
           </p>
           <div className="button-row">
             <Link className="button button-primary" href="/about#projects">
-              More about me <span aria-hidden="true">→</span>
+              More about me
+              <ArrowRight aria-hidden="true" className="size-4" />
             </Link>
             <Link className="button button-secondary" href="/blog">
               Read my notes
@@ -61,7 +65,8 @@ export default function Home() {
             evaluation.
           </p>
           <Link className="text-link" href="/about">
-            More about my approach <span aria-hidden="true">→</span>
+            More about my approach
+            <ArrowRight aria-hidden="true" className="size-4" />
           </Link>
         </div>
       </section>
@@ -69,14 +74,17 @@ export default function Home() {
       <section className="container-shell home-section writing-preview">
         <div className="section-heading-row">
           <div>
-            <p className="eyebrow">Latest writing</p>
-            <h2>Notes from the work.</h2>
+            <h2>Latest from my notes</h2>
+            <p className="section-subtitle">
+              Thoughts, learning, and stories from my journey
+            </p>
           </div>
           <Link className="quiet-link" href="/blog">
-            All writing <ArrowUpRight className="size-4" />
+            All writing
+            <ArrowUpRight aria-hidden="true" className="size-4" />
           </Link>
         </div>
-        <BlogEmpty compact />
+        <LatestPosts posts={latestPosts} />
       </section>
     </main>
   );

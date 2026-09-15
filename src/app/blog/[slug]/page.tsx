@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { ComponentProps } from "react";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -72,7 +73,8 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <main className="container-shell article-shell">
       <Link className="back-link" href="/blog">
-        ← Back to writing
+        <ArrowLeft aria-hidden="true" className="size-4" />
+        Back to writing
       </Link>
       <article>
         <header className="article-header">

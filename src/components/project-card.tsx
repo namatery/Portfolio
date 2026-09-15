@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "@/components/icons";
+import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/portfolio";
 
 type ProjectCardProps = {
@@ -23,7 +23,7 @@ export function ProjectCard({ project, compact = false }: ProjectCardProps) {
           <p className="project-context">{project.context}</p>
           <h3>{project.name}</h3>
         </div>
-        <ArrowUpRight className="project-arrow" />
+        <ArrowUpRight aria-hidden="true" className="project-arrow" />
       </div>
 
       <p className="project-description">{project.description}</p>

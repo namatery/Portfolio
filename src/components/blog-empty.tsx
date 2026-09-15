@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 type BlogEmptyProps = {
   compact?: boolean;
@@ -22,7 +23,8 @@ export function BlogEmpty({ compact = false }: BlogEmptyProps) {
         </p>
         {compact && (
           <Link className="text-link" href="/blog">
-            Visit the writing desk <span aria-hidden="true">→</span>
+            Visit the writing desk
+            <ArrowRight aria-hidden="true" className="size-4" />
           </Link>
         )}
       </div>

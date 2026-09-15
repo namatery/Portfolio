@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "@/components/icons";
+import { ArrowUpRight } from "lucide-react";
 import { ProjectCard } from "@/components/project-card";
 import {
   capabilities,
@@ -51,7 +51,7 @@ function ExperienceSection() {
                 {experience.href ? (
                   <a href={experience.href} target="_blank" rel="noreferrer">
                     {experience.company}
-                    <ArrowUpRight className="size-4" />
+                    <ArrowUpRight aria-hidden="true" className="size-4" />
                   </a>
                 ) : (
                   experience.company
@@ -120,7 +120,7 @@ function OpenSourceSection() {
             </div>
             <span>
               {contribution.status}
-              <ArrowUpRight className="size-3.5" />
+              <ArrowUpRight aria-hidden="true" className="size-3.5" />
             </span>
           </a>
         ))}
@@ -197,7 +197,8 @@ export default function AboutPage() {
             className="button button-primary"
             href={`mailto:${profile.email}`}
           >
-            Send me an email <ArrowUpRight className="size-4" />
+            Send me an email
+            <ArrowUpRight aria-hidden="true" className="size-4" />
           </a>
         </div>
       </section>
