@@ -1,6 +1,71 @@
 import type { SVGProps } from "react";
-export function ArrowUpRight(props: SVGProps<SVGSVGElement>) { return <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg> }
-export function Sun(props: SVGProps<SVGSVGElement>) { return <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}><circle cx="10" cy="10" r="3.25" stroke="currentColor" strokeWidth="1.4" /><path d="M10 2v1.5M10 16.5V18M2 10h1.5M16.5 10H18M4.34 4.34 5.4 5.4m9.2 9.2 1.06 1.06m0-11.32L14.6 5.4M5.4 14.6l-1.06 1.06" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" /></svg> }
-export function Moon(props: SVGProps<SVGSVGElement>) { return <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}><path d="M16.5 12.7A7 7 0 0 1 7.3 3.5a7 7 0 1 0 9.2 9.2Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg> }
-export function LinkedIn(props: SVGProps<SVGSVGElement>) { return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}><path d="M6.5 8.1H3.2V19h3.3V8.1ZM4.8 3a1.9 1.9 0 1 0 0 3.8A1.9 1.9 0 0 0 4.8 3Zm14.4 9.7c0-3.3-1.8-4.9-4.2-4.9-1.9 0-2.8 1.1-3.3 1.8V8.1H8.4V19h3.3v-5.4c0-1.4.3-2.8 2-2.8 1.7 0 1.7 1.6 1.7 2.9V19h3.3l.5-6.3Z" /></svg> }
-export function GitHub(props: SVGProps<SVGSVGElement>) { return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}><path fillRule="evenodd" d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.3-2.3-.3-4.7-1.1-4.7-5A4 4 0 0 1 6.8 8.7c-.1-.3-.5-1.3.1-2.7 0 0 .9-.3 2.8 1.1a9.7 9.7 0 0 1 5.1 0C16.7 5.7 17.6 6 17.6 6c.6 1.4.2 2.4.1 2.7a4 4 0 0 1 1.1 2.8c0 3.8-2.4 4.7-4.7 5 .4.3.7 1 .7 2V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" clipRule="evenodd" /></svg> }
+
+type IconProps = SVGProps<SVGSVGElement>;
+
+export function ArrowUpRight(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M4 12 12 4M6 4h6v6"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function Sun(props: IconProps) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
+      <circle
+        cx="10"
+        cy="10"
+        r="3.25"
+        stroke="currentColor"
+        strokeWidth="1.4"
+      />
+      <path
+        d="M10 2v1.5M10 16.5V18M2 10h1.5M16.5 10H18M4.34 4.34 5.4 5.4m9.2 9.2 1.06 1.06m0-11.32L14.6 5.4M5.4 14.6l-1.06 1.06"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function Moon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M16.5 12.7A7 7 0 0 1 7.3 3.5a7 7 0 1 0 9.2 9.2Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function LinkedIn(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M6.5 8.1H3.2V19h3.3V8.1ZM4.8 3a1.9 1.9 0 1 0 0 3.8A1.9 1.9 0 0 0 4.8 3Zm14.4 9.7c0-3.3-1.8-4.9-4.2-4.9-1.9 0-2.8 1.1-3.3 1.8V8.1H8.4V19h3.3v-5.4c0-1.4.3-2.8 2-2.8 1.7 0 1.7 1.6 1.7 2.9V19h3.3l.5-6.3Z" />
+    </svg>
+  );
+}
+
+export function GitHub(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.3-2.3-.3-4.7-1.1-4.7-5A4 4 0 0 1 6.8 8.7c-.1-.3-.5-1.3.1-2.7 0 0 .9-.3 2.8 1.1a9.7 9.7 0 0 1 5.1 0C16.7 5.7 17.6 6 17.6 6c.6 1.4.2 2.4.1 2.7a4 4 0 0 1 1.1 2.8c0 3.8-2.4 4.7-4.7 5 .4.3.7 1 .7 2V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
