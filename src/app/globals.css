@@ -24,18 +24,6 @@
   --font-size-heading-lg: clamp(2rem, 1.7rem + 1.5vw, 2.875rem);        /* 32px → 46px */
 }
 
-.dark {
-  --background: #0e100d;
-  --surface: #151813;
-  --text: #f1f2ed;
-  --muted: #9a9f96;
-  --border: #282c25;
-  --accent: #9aad8f;
-  --accent-hover: #afc0a5;
-  --accent-soft: #1c2419;
-  --shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--text);
@@ -130,14 +118,9 @@ a {
   color: var(--accent);
 }
 
-.header-actions,
 .nav-list {
   display: flex;
   align-items: center;
-}
-
-.header-actions {
-  gap: 24px;
 }
 
 .nav-list {
@@ -159,26 +142,6 @@ a {
 .quiet-link:hover,
 .text-link:hover {
   color: var(--accent);
-}
-
-.icon-button {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  color: var(--text);
-  cursor: pointer;
-  transition:
-    border-color 0.18s,
-    background 0.18s;
-}
-
-.icon-button:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
 }
 
 .hero {
@@ -310,10 +273,6 @@ a {
 .button-primary {
   background: var(--accent);
   color: #fff;
-}
-
-.dark .button-primary {
-  color: #11140f;
 }
 
 .button-primary:hover {
@@ -691,17 +650,9 @@ a {
   padding: 0;
 }
 
-.dark .footer-links .footer-link-primary {
-  color: #11140f;
-}
-
 .footer-links .footer-link-primary:hover {
   background: var(--accent-hover);
   color: #fff;
-}
-
-.dark .footer-links .footer-link-primary:hover {
-  color: #11140f;
 }
 
 .footer-bottom {
@@ -753,6 +704,180 @@ a {
 .page-intro {
   max-width: 960px;
   padding-bottom: 100px;
+}
+
+.about-page {
+  min-height: 70vh;
+}
+
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+  gap: 5%;
+  align-items: center;
+  min-height: 560px;
+}
+
+.about-hero-copy h1 {
+  max-width: 560px;
+  margin: 0;
+  font-size: var(--font-size-heading-lg);
+  line-height: 0.99;
+  letter-spacing: -0.066em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+
+.about-hero-description {
+  max-width: 600px;
+  margin-top: 32px;
+  color: var(--muted);
+  font-size: var(--font-size-lead);
+  line-height: 1.58;
+}
+
+.about-hero-description p {
+  margin: 0;
+}
+
+.about-hero-description p + p {
+  margin-top: 18px;
+}
+
+.about-hero-illustration {
+  display: block;
+  width: min(700px, 100%);
+  height: auto;
+  justify-self: end;
+}
+
+.career-story {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 8%;
+  margin-top: 56px;
+  padding-top: 112px;
+  border-top: 1px solid var(--border);
+}
+
+.career-story-copy h2 {
+  max-width: 400px;
+  margin: 0;
+  font-size: var(--font-size-heading-md);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+
+.career-story-copy p {
+  max-width: 500px;
+  margin: 26px 0 0;
+  color: var(--muted);
+  font-size: var(--font-size-body-large);
+  line-height: 1.62;
+}
+
+.career-story-copy p + p {
+  margin-top: 22px;
+}
+
+.career-timeline {
+  position: relative;
+  margin: 3px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.career-timeline::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  bottom: 46px;
+  left: 6px;
+  width: 1px;
+  background: var(--border);
+}
+
+.career-timeline-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 22px;
+  padding: 0 0 34px 38px;
+}
+
+.career-timeline-entry:last-child {
+  padding-bottom: 0;
+}
+
+.career-timeline-entry::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 1px;
+  width: 11px;
+  height: 11px;
+  border: 3px solid var(--background);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--border);
+}
+
+.career-timeline-year {
+  padding-top: 1px;
+  color: var(--text);
+  font: 600 var(--font-size-ui)/1.4 var(--font-geist-mono);
+}
+
+.career-timeline-entry h3 {
+  margin: 0;
+  font-size: var(--font-size-body);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  font-weight: 650;
+}
+
+.career-timeline-entry p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.life-beyond {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
+  gap: 7%;
+  align-items: center;
+  margin-top: 112px;
+  padding-top: 112px;
+  border-top: 1px solid var(--border);
+}
+
+.life-beyond-illustration {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.life-beyond-copy h2 {
+  margin: 0;
+  font-size: var(--font-size-heading-md);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+  font-weight: 650;
+  text-wrap: balance;
+}
+
+.life-beyond-copy p {
+  margin: 26px 0 0;
+  color: var(--muted);
+  font-size: var(--font-size-body-large);
+  line-height: 1.62;
+}
+
+.life-beyond-copy p + p {
+  margin-top: 22px;
 }
 
 .lead {
@@ -1286,6 +1411,44 @@ a {
     gap: 42px;
   }
 
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    min-height: auto;
+  }
+
+  .about-hero-illustration {
+    width: min(680px, 100%);
+    justify-self: center;
+  }
+
+  .career-story {
+    grid-template-columns: 1fr;
+    gap: 58px;
+    margin-top: 84px;
+    padding-top: 84px;
+  }
+
+  .career-story-copy p {
+    max-width: 650px;
+  }
+
+  .life-beyond {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-top: 84px;
+    padding-top: 84px;
+  }
+
+  .life-beyond-illustration {
+    width: min(720px, 100%);
+    justify-self: center;
+  }
+
+  .life-beyond-copy {
+    max-width: 650px;
+  }
+
   .blog-illustration {
     order: -1;
   }
@@ -1384,10 +1547,6 @@ a {
     height: 64px;
   }
 
-  .header-actions {
-    gap: 13px;
-  }
-
   .nav-list {
     gap: 15px;
   }
@@ -1432,6 +1591,40 @@ a {
 
   .page-shell {
     padding-block: 70px 90px;
+  }
+
+  .about-hero {
+    gap: 38px;
+  }
+
+  .about-hero-description {
+    margin-top: 26px;
+  }
+
+  .career-story {
+    gap: 48px;
+    margin-top: 66px;
+    padding-top: 68px;
+  }
+
+  .career-story-copy p {
+    font-size: var(--font-size-body);
+  }
+
+  .career-timeline-entry {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+    padding: 0 0 32px 28px;
+  }
+
+  .life-beyond {
+    gap: 38px;
+    margin-top: 66px;
+    padding-top: 68px;
+  }
+
+  .life-beyond-copy p {
+    font-size: var(--font-size-body);
   }
 
   .page-intro {

@@ -1,205 +1,123 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
-import { ProjectCard } from "@/components/project-card";
-import {
-  capabilities,
-  experiences,
-  openSource,
-  profile,
-  projects,
-} from "@/data/portfolio";
+import Image from "next/image";
+
+const careerMilestones = [
+  {
+    year: "2020",
+    title: "Started university",
+    description:
+      "Began studying computer engineering and fell in love with backend development.",
+  },
+  {
+    year: "2022",
+    title: "First professional experience",
+    description:
+      "Joined my first team and worked on real-world systems, learning a ton along the way.",
+  },
+  {
+    year: "2024",
+    title: "Deeper into distributed systems",
+    description:
+      "Worked on scalable systems, performance improvements, and AI-powered products.",
+  },
+  {
+    year: "Now",
+    title: "Building & learning",
+    description:
+      "Currently working as a backend engineer, building products, writing, and exploring what’s next.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Alireza Rezapour, a backend engineer working across distributed systems, data, and applied AI.",
+    "A deeper look at Alireza Rezapour, a backend engineer, lifelong learner, and thoughtful problem solver.",
   alternates: { canonical: "/about/" },
 };
 
-type SectionLabelProps = {
-  number: string;
-  title: string;
-  titleId: string;
-};
-
-function SectionLabel({ number, title, titleId }: SectionLabelProps) {
-  return (
-    <div className="section-label">
-      <span>{number}</span>
-      <h2 id={titleId}>{title}</h2>
-    </div>
-  );
-}
-
-function ExperienceSection() {
-  return (
-    <section className="about-section" aria-labelledby="experience-title">
-      <SectionLabel number="01" title="Experience" titleId="experience-title" />
-
-      <div className="timeline">
-        {experiences.map((experience) => (
-          <article
-            className="timeline-item"
-            key={`${experience.company}-${experience.period}`}
-          >
-            <div className="timeline-meta">
-              <p>{experience.period}</p>
-              <p>{experience.location}</p>
-            </div>
-            <div className="timeline-content">
-              <h3>
-                {experience.href ? (
-                  <a href={experience.href} target="_blank" rel="noreferrer">
-                    {experience.company}
-                    <ArrowUpRight aria-hidden="true" className="size-4" />
-                  </a>
-                ) : (
-                  experience.company
-                )}
-              </h3>
-              <p className="role">{experience.role}</p>
-              <ul>
-                {experience.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ProjectsSection() {
-  const featuredProjects = projects.filter((project) => project.featured);
-  const otherProjects = projects.filter((project) => !project.featured);
-
-  return (
-    <section
-      className="about-section"
-      id="projects"
-      aria-labelledby="projects-title"
-    >
-      <SectionLabel number="02" title="Projects" titleId="projects-title" />
-
-      <div className="featured-projects">
-        {featuredProjects.map((project) => (
-          <ProjectCard project={project} key={project.name} />
-        ))}
-      </div>
-      <div className="small-projects">
-        {otherProjects.map((project) => (
-          <ProjectCard project={project} compact key={project.name} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function OpenSourceSection() {
-  return (
-    <section className="about-section" aria-labelledby="open-source-title">
-      <SectionLabel
-        number="03"
-        title="Open source"
-        titleId="open-source-title"
-      />
-
-      <div className="contribution-list">
-        {openSource.map((contribution) => (
-          <a
-            href={contribution.href}
-            target="_blank"
-            rel="noreferrer"
-            key={contribution.name}
-          >
-            <div>
-              <h3>{contribution.name}</h3>
-              <p>{contribution.detail}</p>
-            </div>
-            <span>
-              {contribution.status}
-              <ArrowUpRight aria-hidden="true" className="size-3.5" />
-            </span>
-          </a>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function CapabilitiesSection() {
-  return (
-    <section className="about-section" aria-labelledby="capabilities-title">
-      <SectionLabel
-        number="04"
-        title="Capabilities"
-        titleId="capabilities-title"
-      />
-
-      <div className="capability-grid">
-        {capabilities.map((group) => (
-          <div key={group.label}>
-            <h3>{group.label}</h3>
-            <ul>
-              {group.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export default function AboutPage() {
   return (
-    <main className="container-shell page-shell">
-      <header className="page-intro about-intro">
-        <p className="eyebrow">About</p>
-        <h1>I like hard systems problems and simple explanations.</h1>
-        <div className="intro-columns">
-          <p className="lead">
-            I’m Alireza, a backend engineer based in Mashhad. I build services that
-            handle money, data, messages, and increasingly, language models.
-          </p>
-          <div>
+    <main className="container-shell page-shell about-page">
+      <section className="about-hero" aria-labelledby="about-title">
+        <header className="about-hero-copy">
+          <p className="eyebrow">About me</p>
+          <h1 id="about-title">A bit more about me</h1>
+          <div className="about-hero-description">
             <p>
-              My work tends to begin when a system needs to become more reliable,
-              observable, or easier to reason about. That might mean tracing a
-              production failure, reshaping service boundaries, tuning a database,
-              or designing retrieval that can support its claims.
+              I&apos;m Alireza Rezapour, a backend engineer, lifelong learner, and
+              someone who enjoys turning complex problems into simple, reliable
+              solutions.
             </p>
             <p>
-              I value pragmatic architecture, careful measurement, and leaving both
-              code and teams clearer than I found them.
+              This page is a deep dive into who I am, what I care about, and the
+              journey I&apos;m on — both in tech and in life.
             </p>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <ExperienceSection />
-      <ProjectsSection />
-      <OpenSourceSection />
-      <CapabilitiesSection />
+        <Image
+          className="about-hero-illustration"
+          src="/images/about-me.png"
+          alt="A hand-drawn workspace overlooking Tehran, with a laptop, books, coffee, plants, and notes about learning and building"
+          width={1536}
+          height={1024}
+          priority
+          sizes="(max-width: 800px) calc(100vw - 48px), 54vw"
+        />
+      </section>
 
-      <section className="contact-panel" aria-labelledby="contact-title">
-        <div className="contact-copy">
-          <p className="eyebrow">Get in touch</p>
-          <h2 id="contact-title">Have a problem worth thinking through?</h2>
+      <section className="career-story" aria-labelledby="career-story-title">
+        <div className="career-story-copy">
+          <h2 id="career-story-title">From curiosity to a career.</h2>
           <p>
-            I’m happy to talk about backend architecture, applied AI, open-source
-            work, or a role where careful engineering matters.
+            I’ve always been curious about how things work — from small scripts to
+            large distributed systems. What started as curiosity in high school
+            turned into a deep interest in software engineering, and eventually a
+            career.
           </p>
-          <a
-            className="button button-primary"
-            href={`mailto:${profile.email}`}
-          >
-            Send me an email
-            <ArrowUpRight aria-hidden="true" className="size-4" />
-          </a>
+          <p>
+            Over the past few years, I’ve worked on backend systems, developer
+            tools, and AI products, mostly in the fintech and infrastructure space.
+            I enjoy building things that are reliable, scalable, and actually
+            useful.
+          </p>
+        </div>
+
+        <ol className="career-timeline" aria-label="Career milestones">
+          {careerMilestones.map((milestone) => (
+            <li className="career-timeline-entry" key={milestone.year}>
+              <span className="career-timeline-year">{milestone.year}</span>
+              <div>
+                <h3>{milestone.title}</h3>
+                <p>{milestone.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="life-beyond" aria-labelledby="life-beyond-title">
+        <Image
+          className="life-beyond-illustration"
+          src="/images/hobbies.png"
+          alt="A hand-drawn camera, plant, books about movies and music, and a framed mountain landscape"
+          width={1873}
+          height={840}
+          sizes="(max-width: 800px) calc(100vw - 48px), 58vw"
+        />
+
+        <div className="life-beyond-copy">
+          <h2 id="life-beyond-title">Life beyond code.</h2>
+          <p>
+            When I&apos;m not in front of a computer, you&apos;ll probably find me
+            making coffee, watching a good movie, listening to music (techno,
+            house, or rock), or exploring new ideas.
+          </p>
+          <p>
+            I&apos;m also interested in photography, games, and travel. I believe
+            these hobbies help me stay creative and bring fresh perspectives to my
+            work.
+          </p>
         </div>
       </section>
     </main>

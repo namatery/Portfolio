@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const navigationLinks = [
   { href: "/", label: "Home" },
@@ -19,18 +18,15 @@ export function SiteHeader() {
           AR<span aria-hidden="true">.</span>
         </Link>
 
-        <div className="header-actions">
-          <nav aria-label="Primary navigation">
-            <ul className="nav-list">
-              {navigationLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <ThemeToggle />
-        </div>
+        <nav aria-label="Primary navigation">
+          <ul className="nav-list">
+            {navigationLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </header>
   );

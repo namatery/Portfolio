@@ -23,7 +23,7 @@ const mdxOptions = {
       [
         rehypePrettyCode,
         {
-          theme: { dark: "github-dark", light: "github-light" },
+          theme: "github-light",
           keepBackground: false,
         },
       ],
