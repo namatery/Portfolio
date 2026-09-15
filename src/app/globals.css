@@ -206,11 +206,34 @@ a {
 }
 
 .availability-dot {
+  flex: 0 0 auto;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 4px var(--accent-soft);
+  animation: availability-dot-enter 0.35s ease-out both;
+}
+
+.availability-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.availability-text-reduced {
+  display: none;
+}
+
+@keyframes availability-dot-enter {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .page-intro h1,
@@ -1330,6 +1353,10 @@ a {
     gap: 42px;
   }
 
+  .availability-text {
+    white-space: normal;
+  }
+
   .portrait-wrap {
     align-items: center;
   }
@@ -1442,6 +1469,18 @@ a {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .availability-dot {
+    animation: none;
+  }
+
+  .availability-text {
+    display: none;
+  }
+
+  .availability-text-reduced {
+    display: inline;
   }
 
   *,

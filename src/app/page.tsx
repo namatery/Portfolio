@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { AvailabilityStatus } from "@/components/availability-status";
 import { LatestPosts } from "@/components/latest-posts";
 import { profile } from "@/data/portfolio";
 import { getAllPosts } from "@/lib/posts";
@@ -12,10 +13,7 @@ export default function Home() {
     <main>
       <section className="container-shell hero">
         <div className="hero-copy">
-          <p className="eyebrow">
-            <span className="availability-dot" aria-hidden="true" />
-            Trying to leave things better than I found them
-          </p>
+          <AvailabilityStatus />
           <h1>Hey, I&rsquo;m Alireza.</h1>
           <p className="hero-lede">
             <strong>{profile.summaryLead}</strong>
