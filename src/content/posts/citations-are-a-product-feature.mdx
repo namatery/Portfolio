@@ -1,0 +1,57 @@
+---
+title: "In RAG products, citations are a product feature"
+description: "A retrieval system becomes useful when people can inspect why an answer was given, not merely when the answer sounds confident."
+publishedAt: 2026-09-03
+category: AI
+tags:
+  - RAG
+  - Evaluation
+  - Product design
+draft: false
+---
+
+A retrieval-augmented generation system can produce an answer that is fluent, relevant, and wrong. Fluency hides uncertainty well, which is exactly why a citation cannot be treated as decoration added after generation.
+
+In a serious product, citations are part of the answer contract. They let a user verify the claim, understand its scope, and recover when the model gets something wrong.
+
+## Retrieval needs addressable evidence
+
+Good citations begin before the retrieval step. The source corpus needs stable document identities, useful metadata, and chunks that can be mapped back to something a person can inspect.
+
+A chunk should retain its document title, section heading, version or effective date, and location in the original source. For long policy documents, a citation to “document 7” is technically traceable but practically useless. A section and page reference gives the user a real verification path.
+
+This also affects chunking. Splitting solely by token count can separate a rule from its exceptions or lose the heading that explains what a paragraph applies to. Structure-aware chunks preserve more of the evidence needed to interpret a passage.
+
+## Generate from an evidence set
+
+The model should answer from a clearly defined set of retrieved passages. That evidence set can be logged, evaluated, and shown to the user.
+
+The prompt can require the model to attach a source identifier to each factual claim and to say when the evidence is insufficient. The application should then validate those identifiers against the passages it actually supplied. This does not guarantee that every claim is supported, but it prevents fabricated references and creates a foundation for better checks.
+
+For higher-stakes workflows, a second pass can compare claims with their cited passages. The useful question is not “Does this answer have citations?” It is “Does each citation support the nearby claim?”
+
+## Design the interface for verification
+
+Citations should reduce the cost of checking an answer. A user ought to be able to open the relevant excerpt without losing their place, see the surrounding context, and identify the source version.
+
+This is where product design and retrieval design meet. A perfectly ranked passage still fails if the interface buries it behind an opaque filename. Conversely, a clear source panel can reveal a retrieval miss quickly and help the user reformulate the question.
+
+The answer should also separate sourced facts from model synthesis. A sentence such as “Based on these policies, the likely next step is…” signals interpretation more honestly than presenting a recommendation as if it appeared verbatim in the source.
+
+## Evaluate trust, not just similarity
+
+Retrieval metrics such as recall and ranking quality are necessary, but they do not describe the complete user experience. Evaluation should cover several layers:
+
+1. Did retrieval include the evidence required to answer?
+2. Did the response use that evidence correctly?
+3. Does each citation support the claim attached to it?
+4. Can a user reach and understand the original context?
+5. Does the system abstain when the corpus is insufficient?
+
+A small, reviewed set of real questions is often more revealing than a large synthetic benchmark. Include ambiguous questions, conflicting sources, outdated documents, and questions whose answer should be “I don’t know.” Those cases expose whether the system is designed for trust or merely for plausible completion.
+
+## Treat provenance as durable data
+
+Store the source version, retrieved passage IDs, model and prompt version, and final citations with each interaction. When an answer is challenged, this record makes the behavior reproducible. When the corpus changes, it also helps distinguish a retrieval regression from a source update.
+
+The best RAG experiences do not ask users to trust the model more. They make verification cheap enough that blind trust is unnecessary. Citations are how the product shows its work—and how the team learns when that work is not good enough.

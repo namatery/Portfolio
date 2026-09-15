@@ -22,7 +22,7 @@ The production build uses Next.js static export and is written to `out/`.
 
 ## Writing
 
-Blog posts live in `src/content/posts` as `.mdx` files. The site intentionally ships with no published posts. A future post must provide this frontmatter:
+Blog posts live in `src/content/posts` as `.mdx` files. Each post must provide this frontmatter:
 
 ```yaml
 ---

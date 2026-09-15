@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { formatPostDate, type Post } from "@/lib/posts";
+import { PostCards } from "@/components/post-cards";
+import type { Post } from "@/lib/posts";
 
 type LatestPostsProps = {
   posts: Post[];
@@ -37,26 +36,5 @@ export function LatestPosts({ posts }: LatestPostsProps) {
         }))
       : previewPosts.map((post) => ({ ...post, href: "/blog" }));
 
-  return (
-    <div className="latest-post-grid">
-      {cards.map((post, index) => (
-        <article className="latest-post-card" key={post.title}>
-          <div className="latest-post-image" aria-hidden="true">
-            <span>{String(index + 1).padStart(2, "0")}</span>
-          </div>
-          <time dateTime={post.publishedAt}>
-            {formatPostDate(post.publishedAt)}
-          </time>
-          <h3>
-            <Link href={post.href}>{post.title}</Link>
-          </h3>
-          <p>{post.description}</p>
-          <Link className="latest-post-link" href={post.href}>
-            Read more
-            <ArrowRight aria-hidden="true" className="size-4" />
-          </Link>
-        </article>
-      ))}
-    </div>
-  );
+  return <PostCards headingLevel="h3" posts={cards} />;
 }

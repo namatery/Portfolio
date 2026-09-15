@@ -3,6 +3,8 @@ import path from "node:path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
 
+export { formatPostDate } from "@/lib/post-date";
+
 export type PostFrontmatter = { title: string; description: string; publishedAt: string; updatedAt?: string; category: string; tags: string[]; draft: boolean };
 export type Post = PostFrontmatter & { slug: string; content: string; readingTime: string };
 const postsDirectory = path.join(process.cwd(), "src/content/posts");
@@ -30,4 +32,3 @@ export function getAllPosts(): Post[] {
   return fs.readdirSync(postsDirectory).filter((file) => file.endsWith(".mdx")).map((file) => parsePost(file.replace(/\.mdx$/, ""), fs.readFileSync(path.join(postsDirectory, file), "utf8"))).filter((post) => !post.draft).sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 }
 export function getPost(slug: string) { return getAllPosts().find((post) => post.slug === slug); }
-export function formatPostDate(date: string) { return new Intl.DateTimeFormat("en", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(date)); }

@@ -1,0 +1,61 @@
+---
+title: "A cache is a data ownership decision"
+description: "Caching gets easier to reason about when you stop treating it as a speed trick and start treating it as a second copy of your data."
+publishedAt: 2026-09-15
+category: Engineering
+tags:
+  - Caching
+  - Reliability
+  - Databases
+draft: false
+---
+
+Caching is usually introduced as a performance technique: put frequently requested data somewhere faster, then celebrate the lower latency. That description is correct, but incomplete. The difficult part of a cache is not reading from it. The difficult part is deciding what its contents mean.
+
+The moment an application stores a second copy of data, it has created a consistency problem. That copy needs an owner, a lifetime, and a recovery story. Without those decisions, a cache quietly becomes another database—just one with fewer guarantees and less observability.
+
+## Start with the pressure, not the tool
+
+Before adding Redis or an in-process map, identify the work you are trying to avoid. Is the database repeating an expensive aggregate? Is a downstream service slow? Are thousands of requests asking for a value that changes once an hour?
+
+Measure that pressure directly. A useful baseline includes:
+
+- request volume and latency percentiles;
+- database queries per request;
+- the cost and frequency of recomputing the value;
+- how often the underlying data actually changes; and
+- the impact of serving an old value.
+
+This prevents a common mistake: caching a cheap query while the real bottleneck is connection contention, a missing index, or an oversized response.
+
+## Define what a hit promises
+
+A cache hit is not automatically correct. It is correct only within a freshness contract.
+
+For a product catalogue, a value that is five minutes old may be harmless. For an account balance, the same delay may be unacceptable. Write the contract in plain language before choosing a time to live: “This endpoint may show data up to 60 seconds old,” or “A successful write must be visible to the next read.”
+
+That statement narrows the design. Time-based expiry may be enough for the first contract. The second probably needs explicit invalidation, versioned keys, write-through behavior, or no cache at all.
+
+## Make invalidation part of the write path
+
+Cache invalidation is often described as a cleanup task. It is better understood as part of the data mutation itself.
+
+If a command changes a record, ask which derived views are now untrustworthy. Those keys should be expired or replaced as deliberately as the primary write is committed. When the database write and invalidation cannot be atomic, make the failure visible and repairable. An outbox event, a short TTL, or a periodic reconciliation job can bound the inconsistency.
+
+The right mechanism depends on the cost of stale data. What matters is that the gap is intentional rather than accidental.
+
+## Design for a cold cache
+
+A cache is disposable infrastructure. The system should remain correct when it is empty, unavailable, or full of expired entries.
+
+Cold starts also expose a second problem: if every miss triggers the same expensive query, a popular key can create a thundering herd. Request coalescing, staggered expiration, background refresh, or a small amount of jitter can keep recovery from becoming an incident.
+
+This is worth testing. Clear the cache in a staging environment and observe database load, response latency, and recovery time. If that exercise feels dangerous, the cache has become a hidden dependency.
+
+## Observe usefulness, not just hit rate
+
+Hit rate is easy to graph and easy to misread. A 95% hit rate may be irrelevant if the remaining 5% contains the most expensive requests. A lower hit rate can still be valuable when it removes disproportionate load from a critical path.
+
+Track latency for hits and misses, backend work avoided, eviction rate, key cardinality, and stale-read errors. Together, those measurements answer the useful question: is this cache buying enough capacity and responsiveness to justify its consistency cost?
+
+Caching works best when it is treated as a data design decision. Give every cached value a freshness contract, an owner, and a failure mode. The speedup then becomes the result of a system you understand, not a bet you are hoping will hold.

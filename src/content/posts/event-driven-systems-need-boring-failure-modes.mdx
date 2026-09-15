@@ -1,0 +1,62 @@
+---
+title: "Event-driven systems need boring failure modes"
+description: "Queues create useful boundaries, but reliability comes from making retries, duplicates, and partial failure routine rather than surprising."
+publishedAt: 2026-09-10
+category: Engineering
+tags:
+  - Messaging
+  - Distributed systems
+  - RabbitMQ
+draft: false
+---
+
+Replacing a synchronous call with a message can remove a fragile runtime dependency. The producer no longer has to wait for the consumer, traffic spikes can be absorbed, and each service can recover at its own pace.
+
+But the failure has not disappeared. It has moved.
+
+That trade can be excellent, as long as the new failure modes are designed into the workflow. A reliable event-driven system makes delayed delivery, duplicate messages, poison payloads, and partial progress feel ordinary.
+
+## Delivery is not the same as completion
+
+A broker confirming a publish tells you that it accepted a message. It does not tell you that the business operation finished.
+
+This distinction should appear in the product model. If a transfer request has been accepted but its downstream work is incomplete, represent that state explicitly. “Pending” is more honest—and more operable—than returning success and hoping every consumer completes.
+
+For workflows that cross several services, correlation IDs and durable status transitions make progress traceable. They also give support and operations teams something concrete to inspect when a user asks what happened.
+
+## Assume every message can arrive twice
+
+Exactly-once delivery is an attractive phrase, but most application designs are safer when they assume at-least-once delivery. A consumer may finish its database work and crash before acknowledging the message. The broker will deliver it again.
+
+Consumers therefore need idempotency. Common approaches include:
+
+- storing a unique event or command ID alongside the result;
+- using a business key with a database uniqueness constraint;
+- making updates conditional on the current state; and
+- turning repeated commands into safe no-ops.
+
+The database constraint matters. An in-memory “already processed” check cannot protect two workers racing each other.
+
+## Retry only what can recover
+
+Retries help with transient failures: a network timeout, a locked row, or a downstream service restarting. They do not repair an invalid payload or missing business prerequisite.
+
+Classify failures before applying retry policy. Recoverable errors can use exponential backoff with jitter and a limit. Permanent errors should move to a dead-letter path with enough context to diagnose and replay them safely.
+
+An infinite retry loop is not resilience. It is a stuck job consuming capacity while hiding the original error.
+
+## Keep publication and state changes together
+
+One of the sharpest edges appears when a service updates its database and publishes an event as two separate operations. If it commits the first and fails before the second, the state changes without notifying the rest of the system. Reversing the order creates the opposite problem.
+
+The transactional outbox pattern provides a practical answer. Store the state change and an outgoing event in the same database transaction. A separate publisher reads the outbox and delivers the event, retrying as needed. Consumers still need idempotency, but the dangerous gap on the producer side becomes recoverable.
+
+## Make the invisible queue visible
+
+Synchronous failures are noisy: a request is slow or returns an error. Asynchronous failures can sit quietly in a queue.
+
+Useful signals include queue depth, age of the oldest message, processing duration, retry count, dead-letter volume, and consumer availability. Message age is especially valuable because a stable queue depth can still hide work that has been stuck for hours.
+
+Logs and traces should carry the same message and correlation identifiers. This turns a chain of isolated handlers into one observable workflow.
+
+Event-driven architecture is not reliable because it uses a broker. It is reliable when its boundaries make failure containable and recovery repeatable. The goal is not a system that never fails. It is a system whose failures are unsurprising enough to handle on an ordinary day.

@@ -1,43 +1,49 @@
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { formatPostDate, type Post } from "@/lib/posts";
+"use client";
+
+import { useState } from "react";
+import { PostCards } from "@/components/post-cards";
+import type { Post } from "@/lib/posts";
 
 type PostListProps = {
   posts: Post[];
 };
 
+const filters = ["All", "Engineering", "Career", "AI"] as const;
+type PostFilter = (typeof filters)[number];
+
 export function PostList({ posts }: PostListProps) {
+  const [activeFilter, setActiveFilter] = useState<PostFilter>("All");
+  const filteredPosts = posts.filter(
+    (post) => activeFilter === "All" || post.category === activeFilter,
+  );
+  const cards = filteredPosts.map((post) => ({
+    ...post,
+    href: `/blog/${post.slug}`,
+  }));
+
   return (
-    <div className="post-list">
-      {posts.map((post) => {
-        const postHref = `/blog/${post.slug}`;
+    <section aria-label="Articles">
+      <div aria-label="Filter articles" className="post-filters" role="group">
+        {filters.map((filter) => (
+          <button
+            aria-pressed={activeFilter === filter}
+            className="post-filter"
+            key={filter}
+            onClick={() => setActiveFilter(filter)}
+            type="button"
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
 
-        return (
-          <article key={post.slug}>
-            <div className="post-meta">
-              <span>{formatPostDate(post.publishedAt)}</span>
-              <span>{post.readingTime}</span>
-              <span>{post.category}</span>
-            </div>
-
-            <h2>
-              <Link href={postHref}>{post.title}</Link>
-            </h2>
-            <p>{post.description}</p>
-
-            <div className="post-card-footer">
-              <ul className="tag-list">
-                {post.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-              <Link aria-label={`Read ${post.title}`} href={postHref}>
-                <ArrowUpRight aria-hidden="true" className="size-5" />
-              </Link>
-            </div>
-          </article>
-        );
-      })}
-    </div>
+      {cards.length > 0 ? (
+        <PostCards posts={cards} />
+      ) : (
+        <p aria-live="polite" className="filtered-posts-empty">
+          No {activeFilter.toLowerCase()} articles yet.
+        </p>
+      )}
+    </section>
   );
 }
