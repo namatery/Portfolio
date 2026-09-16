@@ -762,7 +762,6 @@ a {
   gap: 8%;
   margin-top: 56px;
   padding-top: 112px;
-  border-top: 1px solid var(--border);
 }
 
 .about-section-heading {
@@ -882,7 +881,6 @@ a {
   align-items: center;
   margin-top: 112px;
   padding-top: 112px;
-  border-top: 1px solid var(--border);
 }
 
 .life-beyond-illustration {
@@ -905,7 +903,6 @@ a {
 .personal-values {
   margin-top: 112px;
   padding-top: 112px;
-  border-top: 1px solid var(--border);
 }
 
 .personal-values-grid {
@@ -919,7 +916,6 @@ a {
 
 .personal-value-note {
   padding: 28px 0 8px;
-  border-top: 1px solid var(--border);
 }
 
 .personal-value-heading {
