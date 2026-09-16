@@ -40,7 +40,10 @@ export default function AboutPage() {
     <main className="container-shell page-shell about-page">
       <section className="about-hero" aria-labelledby="about-title">
         <header className="about-hero-copy">
-          <p className="eyebrow">About me</p>
+          <p className="eyebrow">
+            <span className="availability-dot" aria-hidden="true" />
+            About me
+          </p>
           <h1 id="about-title">A bit more about me</h1>
           <div className="about-hero-description">
             <p>
@@ -67,8 +70,12 @@ export default function AboutPage() {
       </section>
 
       <section className="career-story" aria-labelledby="career-story-title">
+        <header className="about-section-heading">
+          <p className="about-section-label">01. My Journey</p>
+          <span className="about-section-heading-line" aria-hidden="true" />
+          <h2 id="career-story-title">From curiosity to a career</h2>
+        </header>
         <div className="career-story-copy">
-          <h2 id="career-story-title">From curiosity to a career.</h2>
           <p>
             I’ve always been curious about how things work — from small scripts to
             large distributed systems. What started as curiosity in high school
@@ -97,6 +104,11 @@ export default function AboutPage() {
       </section>
 
       <section className="life-beyond" aria-labelledby="life-beyond-title">
+        <header className="about-section-heading">
+          <p className="about-section-label">02. OUTSIDE OF WORK</p>
+          <span className="about-section-heading-line" aria-hidden="true" />
+          <h2 id="life-beyond-title">Life beyond code</h2>
+        </header>
         <Image
           className="life-beyond-illustration"
           src="/images/hobbies.png"
@@ -107,7 +119,6 @@ export default function AboutPage() {
         />
 
         <div className="life-beyond-copy">
-          <h2 id="life-beyond-title">Life beyond code.</h2>
           <p>
             When I&apos;m not in front of a computer, you&apos;ll probably find me
             making coffee, watching a good movie, listening to music (techno,

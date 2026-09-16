@@ -765,14 +765,40 @@ a {
   border-top: 1px solid var(--border);
 }
 
-.career-story-copy h2 {
-  max-width: 400px;
+.about-section-heading {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.about-section-label {
+  margin: 0;
+  color: var(--muted);
+  font: 600 var(--font-size-caption)/1.35 var(--font-geist-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.about-section-heading-line {
+  margin-bottom: 16px;
+  height: 1px;
+  background: var(--border);
+}
+
+.about-section-heading h2 {
   margin: 0;
   font-size: var(--font-size-heading-md);
   line-height: 1.04;
   letter-spacing: -0.055em;
   font-weight: 650;
   text-wrap: balance;
+}
+
+.career-story-copy p:first-child,
+.life-beyond-copy p:first-child {
+  margin-top: 0;
 }
 
 .career-story-copy p {
@@ -863,15 +889,6 @@ a {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.life-beyond-copy h2 {
-  margin: 0;
-  font-size: var(--font-size-heading-md);
-  line-height: 1.04;
-  letter-spacing: -0.055em;
-  font-weight: 650;
-  text-wrap: balance;
 }
 
 .life-beyond-copy p {
@@ -1600,6 +1617,14 @@ a {
 
   .about-hero {
     gap: 38px;
+  }
+
+  .about-section-heading {
+    gap: 8px;
+  }
+
+  .about-section-heading-line {
+    margin-bottom: 4px;
   }
 
   .about-hero-description {

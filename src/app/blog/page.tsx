@@ -18,7 +18,10 @@ export default function BlogPage() {
     <main className="container-shell page-shell blog-page">
       <section className="blog-hero">
         <header className="page-intro">
-          <p className="eyebrow">Writing</p>
+          <p className="eyebrow">
+            <span className="availability-dot" aria-hidden="true" />
+            Writing
+          </p>
           <h1>Things I’ve learned. Things I’m still figuring out.</h1>
           <p className="lead">
             Notes on engineering, products, career, ideas, and the experiences that

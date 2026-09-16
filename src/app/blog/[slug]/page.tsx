@@ -78,7 +78,10 @@ export default async function PostPage({ params }: PostPageProps) {
       </Link>
       <article>
         <header className="article-header">
-          <p className="eyebrow">{post.category}</p>
+          <p className="eyebrow">
+            <span className="availability-dot" aria-hidden="true" />
+            {post.category}
+          </p>
           <h1>{post.title}</h1>
           <p className="lead">{post.description}</p>
           <div className="post-meta">
