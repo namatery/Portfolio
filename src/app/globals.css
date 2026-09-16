@@ -973,6 +973,44 @@ a {
   transform-origin: right bottom;
 }
 
+.exploring-banner {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: 18px;
+  padding: 16px 22px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+}
+
+.exploring-trees {
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+}
+
+.exploring-copy h3 {
+  margin: 0 0 5px;
+  font-size: var(--font-size-title);
+  line-height: 1.3;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.exploring-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--font-size-ui);
+  line-height: 1.5;
+}
+
+.exploring-backpack {
+  width: 100%;
+  height: auto;
+  padding-left: 22px;
+  border-left: 1px solid var(--border);
+}
+
 .personal-values {
   margin-top: 112px;
   padding-top: 112px;
@@ -1607,6 +1645,12 @@ a {
     max-width: 650px;
   }
 
+  .exploring-banner {
+    grid-template-columns: 64px minmax(0, 1fr) minmax(0, 0.8fr);
+    gap: 12px;
+    padding: 16px;
+  }
+
   .blog-illustration {
     order: -1;
   }
@@ -1815,6 +1859,18 @@ a {
 
   .life-beyond-copy p {
     font-size: var(--font-size-body);
+  }
+
+  .exploring-banner {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  .exploring-backpack {
+    grid-column: 1 / -1;
+    max-width: 320px;
+    justify-self: end;
+    padding-left: 0;
+    border-left: 0;
   }
 
   .hobby-heading h3 {

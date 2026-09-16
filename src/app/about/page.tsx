@@ -244,6 +244,32 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
+        <aside className="exploring-banner" aria-labelledby="exploring-title">
+          <Image
+            className="exploring-trees"
+            src="/images/tree.png"
+            alt=""
+            width={1536}
+            height={1024}
+            sizes="100px"
+          />
+          <div className="exploring-copy">
+            <h3 id="exploring-title">Always exploring</h3>
+            <p>
+              These are just a few pieces of the puzzle. I’m always curious to try
+              new things, meet new people, and collect experiences that make life
+              more interesting.
+            </p>
+          </div>
+          <Image
+            className="exploring-backpack"
+            src="/images/backpack.png"
+            alt="More life, better ideas."
+            width={2172}
+            height={724}
+            sizes="(max-width: 540px) calc(100vw - 80px), (max-width: 800px) 32vw, 420px"
+          />
+        </aside>
       </section>
     </main>
   );
