@@ -559,6 +559,14 @@ a {
   padding: 84px 0 24px;
 }
 
+.site-footer-compact {
+  padding-top: 40px;
+}
+
+.site-footer-compact .footer-bottom {
+  margin-top: 0;
+}
+
 .footer-grid {
   min-height: 430px;
   display: grid;
@@ -713,6 +721,10 @@ a {
 
 .about-page {
   min-height: 70vh;
+}
+
+.page-shell.about-page {
+  padding-bottom: 0;
 }
 
 .about-hero {
