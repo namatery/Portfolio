@@ -56,6 +56,45 @@ const careerMilestones = [
   },
 ];
 
+const hobbies = [
+  {
+    title: "Coffee",
+    caption: "A daily ritual.",
+    description:
+      "I love coffee — the ritual, the craft, and the small moments of calm it brings. From experimenting with different beans and brewing methods to finding the perfect spot, coffee helps me slow down, reset, and think more clearly.",
+    image: "/images/coffee.png",
+    width: 1536,
+    height: 1024,
+  },
+  {
+    title: "Rock & Metal",
+    caption: "Fuel for the mind.",
+    description:
+      "High-energy music, especially rock and metal, keeps me going. It clears my mind, boosts my mood, and helps me focus — whether I’m working, working out, or just need a mental reset.",
+    image: "/images/music.png",
+    width: 1536,
+    height: 1024,
+  },
+  {
+    title: "Games",
+    caption: "Play. Explore. Unwind.",
+    description:
+      "Games are my way to relax, explore new worlds, and experience great stories. Whether it’s competitive shooters, immersive single-player games, or just a casual session with friends, they give me a break and a different perspective.",
+    image: "/images/game.png",
+    width: 1536,
+    height: 1024,
+  },
+  {
+    title: "Adrenaline & Adventure",
+    caption: "Step outside.",
+    description:
+      "I’m always up for activities that get the adrenaline flowing — escape rooms, hiking, bungee jumping, or trying new experiences. They push me out of my comfort zone, help me stay present, and remind me that the best stories often happen outside it.",
+    image: "/images/adrenaline.png",
+    width: 1375,
+    height: 1144,
+  },
+];
+
 export const metadata: Metadata = {
   title: "About",
   description:
@@ -161,27 +200,50 @@ export default function AboutPage() {
           <span className="about-section-heading-line" aria-hidden="true" />
           <h2 id="life-beyond-title">Life beyond code</h2>
         </header>
-        <Image
-          className="life-beyond-illustration"
-          src="/images/hobbies.png"
-          alt="A hand-drawn camera, plant, books about movies and music, and a framed mountain landscape"
-          width={1873}
-          height={840}
-          sizes="(max-width: 800px) calc(100vw - 48px), 58vw"
-        />
-
-        <div className="life-beyond-copy">
-          <p>
-            When I&apos;m not in front of a computer, you&apos;ll probably find me
-            making coffee, watching a good movie, listening to music (techno,
-            house, or rock), or exploring new ideas.
-          </p>
-          <p>
-            I&apos;m also interested in photography, games, and travel. I believe
-            these hobbies help me stay creative and bring fresh perspectives to my
-            work.
-          </p>
+        <div className="life-beyond-intro">
+          <div className="life-beyond-copy">
+            <p>
+              When I&apos;m not in front of a computer, you&apos;ll probably find me
+              making coffee, watching a good movie, listening to music (techno,
+              house, or rock), or exploring new ideas.
+            </p>
+            <p>
+              I&apos;m also interested in photography, games, and travel. I believe
+              these hobbies help me stay creative and bring fresh perspectives to my
+              work.
+            </p>
+          </div>
+          <Image
+            className="life-beyond-illustration"
+            src="/images/hobbies.png"
+            alt="A hand-drawn camera, plant, books about movies and music, and a framed mountain landscape"
+            width={1873}
+            height={840}
+            sizes="(max-width: 800px) calc(100vw - 48px), 58vw"
+          />
         </div>
+        <ul className="hobby-grid">
+          {hobbies.map((hobby, index) => (
+            <li className="hobby-card" key={hobby.title}>
+              <header className="hobby-heading">
+                <span className="hobby-number" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{hobby.title}</h3>
+                <p>{hobby.caption}</p>
+              </header>
+              <p className="hobby-description">{hobby.description}</p>
+              <Image
+                className={`hobby-illustration${hobby.image === "/images/game.png" ? " hobby-illustration-game" : ""}`}
+                src={hobby.image}
+                alt=""
+                width={hobby.width}
+                height={hobby.height}
+                sizes="(max-width: 800px) 70vw, 390px"
+              />
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   );

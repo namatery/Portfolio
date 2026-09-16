@@ -795,8 +795,7 @@ a {
   text-wrap: balance;
 }
 
-.career-story-copy p:first-child,
-.life-beyond-copy p:first-child {
+.career-story-copy p:first-child {
   margin-top: 0;
 }
 
@@ -876,11 +875,16 @@ a {
 
 .life-beyond {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
-  gap: 7%;
-  align-items: center;
+  gap: 42px;
   margin-top: 112px;
   padding-top: 112px;
+}
+
+.life-beyond-intro {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+  gap: 7%;
+  align-items: center;
 }
 
 .life-beyond-illustration {
@@ -890,7 +894,7 @@ a {
 }
 
 .life-beyond-copy p {
-  margin: 26px 0 0;
+  margin: 0;
   color: var(--muted);
   font-size: var(--font-size-body-large);
   line-height: 1.62;
@@ -898,6 +902,75 @@ a {
 
 .life-beyond-copy p + p {
   margin-top: 22px;
+}
+
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hobby-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 350px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.hobby-number {
+  color: var(--accent);
+  font: 600 var(--font-size-caption)/1.4 var(--font-geist-mono);
+}
+
+.hobby-heading h3 {
+  margin: 5px 0 3px;
+  font-size: var(--font-size-title-large);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.hobby-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--font-size-body-small);
+}
+
+.hobby-description {
+  width: 38%;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: var(--font-size-ui);
+  line-height: 1.5;
+}
+
+.hobby-illustration {
+  position: absolute;
+  z-index: -1;
+  right: -4%;
+  bottom: 8px;
+  width: 70%;
+  height: calc(100% - 20px);
+  object-fit: contain;
+  object-position: right bottom;
+}
+
+.hobby-card:last-child .hobby-illustration {
+  right: 0;
+  width: 60%;
+}
+
+.hobby-illustration-game {
+  right: 8px;
+  transform: scale(0.9);
+  transform-origin: right bottom;
 }
 
 .personal-values {
@@ -1516,6 +1589,15 @@ a {
     padding-top: 84px;
   }
 
+  .hobby-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .life-beyond-intro {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
   .life-beyond-illustration {
     width: min(720px, 100%);
     justify-self: center;
@@ -1722,8 +1804,31 @@ a {
     padding-top: 68px;
   }
 
+  .hobby-card {
+    min-height: 330px;
+    padding: 18px;
+  }
+
+  .life-beyond-intro {
+    gap: 38px;
+  }
+
   .life-beyond-copy p {
     font-size: var(--font-size-body);
+  }
+
+  .hobby-heading h3 {
+    font-size: var(--font-size-title);
+  }
+
+  .hobby-description {
+    width: 43%;
+    font-size: var(--font-size-caption);
+  }
+
+  .hobby-illustration {
+    width: 65%;
+    height: calc(100% - 70px);
   }
 
   .page-intro {
