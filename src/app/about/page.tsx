@@ -1,31 +1,42 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BookOpen, Coffee, MessagesSquare, Wrench } from "lucide-react";
 
 const personalValues = [
   {
-    title: "Staying curious",
-    icon: BookOpen,
-    description:
-      "There’s always something new to understand. I enjoy asking questions and following where they lead.",
-  },
-  {
     title: "Building useful things",
-    icon: Wrench,
     description:
-      "I care about making things that solve real problems and make someone’s day easier.",
+      "I enjoy creating tools and systems that solve real problems and make people’s lives a bit easier.",
+    image: "/images/build-useful-things.png",
+    width: 1312,
+    height: 1199,
+    layout: "wide",
   },
   {
-    title: "Sharing knowledge",
-    icon: MessagesSquare,
+    title: "Learning continuously",
     description:
-      "Learning becomes more valuable when you pass it on. I enjoy sharing what I discover and learning from others.",
+      "There’s always something new to learn, and I try to stay curious — in tech and beyond.",
+    image: "/images/learn-continuously.png",
+    width: 1774,
+    height: 887,
+    layout: "stacked",
   },
   {
-    title: "Making room for life",
-    icon: Coffee,
+    title: "Meaningful connections",
     description:
-      "Good work matters to me, and so do the people and moments around it. I try to make time for both.",
+      "I value deep conversations with people who think differently and challenge my perspective.",
+    image: "/images/meaningful-conneciton.png",
+    width: 1536,
+    height: 1024,
+    layout: "wide",
+  },
+  {
+    title: "A better tomorrow",
+    description:
+      "Whether through my work, writing, or small daily choices, I want to be a little better than yesterday.",
+    image: "/images/a-better-tomorrow.png",
+    width: 1536,
+    height: 1024,
+    layout: "stacked",
   },
 ];
 
@@ -171,27 +182,57 @@ export default function AboutPage() {
       </section>
 
       <section className="personal-values" aria-labelledby="personal-values-title">
-        <header className="about-section-heading">
-          <p className="about-section-label">02. MY VALUES</p>
+        <header className="personal-values-label">
+          <p className="about-section-label">02. What I care about</p>
           <span className="about-section-heading-line" aria-hidden="true" />
-          <h2 id="personal-values-title">What I care about</h2>
         </header>
 
-        <ul className="personal-values-grid">
-          {personalValues.map((value) => (
-            <li className="personal-value-note" key={value.title}>
-              <div className="personal-value-heading">
-                <value.icon
-                  className="personal-value-icon"
-                  strokeWidth={1.25}
-                  aria-hidden="true"
+        <div className="personal-values-layout">
+          <div className="personal-values-intro">
+            <h2 id="personal-values-title">What matters<br />to me.</h2>
+            <p>
+              These are the principles that guide my work, shape my decisions,
+              and make life more meaningful.
+            </p>
+            <span className="personal-values-intro-rule" aria-hidden="true" />
+            <Image
+              className="personal-values-illustration"
+              src="/images/what-matters-to-me.png"
+              alt="A plant on books about better tools, brighter minds, kinder people, and a brighter tomorrow, beside a mug reading Progress over Perfection"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 800px) 440px, 360px"
+            />
+          </div>
+
+          <ol className="personal-values-grid">
+            {personalValues.map((value, index) => (
+              <li className={`personal-value-note personal-value-${value.layout}`} key={value.title}>
+                <span className="personal-value-number" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="personal-value-copy">
+                  <h3>{value.title}</h3>
+                  <p>{value.description}</p>
+                </div>
+                <Image
+                  className="personal-value-illustration"
+                  src={value.image}
+                  alt=""
+                  width={value.width}
+                  height={value.height}
+                  sizes="(max-width: 540px) 280px, (max-width: 800px) 40vw, 260px"
                 />
-                <h3>{value.title}</h3>
-              </div>
-              <p>{value.description}</p>
-            </li>
-          ))}
-        </ul>
+                {value.caption && (
+                  <p className="personal-value-caption">
+                    <span className="availability-dot" aria-hidden="true" />
+                    {value.caption}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       <section className="life-beyond" aria-labelledby="life-beyond-title">
