@@ -149,8 +149,10 @@ export default function AboutPage() {
 
       <section className="career-story" aria-labelledby="career-story-title">
         <header className="about-section-heading">
-          <p className="about-section-label">01. My Journey</p>
-          <span className="about-section-heading-line" aria-hidden="true" />
+          <div className="about-section-label-row">
+            <p className="about-section-label">01. My Journey</p>
+            <span className="about-section-heading-line" aria-hidden="true" />
+          </div>
           <h2 id="career-story-title">From curiosity to a career</h2>
         </header>
         <div className="career-story-copy">
@@ -182,7 +184,7 @@ export default function AboutPage() {
       </section>
 
       <section className="personal-values" aria-labelledby="personal-values-title">
-        <header className="personal-values-label">
+        <header className="about-section-label-row personal-values-label">
           <p className="about-section-label">02. What I care about</p>
           <span className="about-section-heading-line" aria-hidden="true" />
         </header>
@@ -237,8 +239,10 @@ export default function AboutPage() {
 
       <section className="life-beyond" aria-labelledby="life-beyond-title">
         <header className="about-section-heading">
-          <p className="about-section-label">03. OUTSIDE OF WORK</p>
-          <span className="about-section-heading-line" aria-hidden="true" />
+          <div className="about-section-label-row">
+            <p className="about-section-label">03. OUTSIDE OF WORK</p>
+            <span className="about-section-heading-line" aria-hidden="true" />
+          </div>
           <h2 id="life-beyond-title">Life beyond code</h2>
         </header>
         <div className="life-beyond-intro">
