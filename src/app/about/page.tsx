@@ -1,5 +1,33 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { BookOpen, Coffee, MessagesSquare, Wrench } from "lucide-react";
+
+const personalValues = [
+  {
+    title: "Staying curious",
+    icon: BookOpen,
+    description:
+      "There’s always something new to understand. I enjoy asking questions and following where they lead.",
+  },
+  {
+    title: "Building useful things",
+    icon: Wrench,
+    description:
+      "I care about making things that solve real problems and make someone’s day easier.",
+  },
+  {
+    title: "Sharing knowledge",
+    icon: MessagesSquare,
+    description:
+      "Learning becomes more valuable when you pass it on. I enjoy sharing what I discover and learning from others.",
+  },
+  {
+    title: "Making room for life",
+    icon: Coffee,
+    description:
+      "Good work matters to me, and so do the people and moments around it. I try to make time for both.",
+  },
+];
 
 const careerMilestones = [
   {
@@ -103,9 +131,33 @@ export default function AboutPage() {
         </ol>
       </section>
 
+      <section className="personal-values" aria-labelledby="personal-values-title">
+        <header className="about-section-heading">
+          <p className="about-section-label">02. MY VALUES</p>
+          <span className="about-section-heading-line" aria-hidden="true" />
+          <h2 id="personal-values-title">What I care about</h2>
+        </header>
+
+        <ul className="personal-values-grid">
+          {personalValues.map((value) => (
+            <li className="personal-value-note" key={value.title}>
+              <div className="personal-value-heading">
+                <value.icon
+                  className="personal-value-icon"
+                  strokeWidth={1.25}
+                  aria-hidden="true"
+                />
+                <h3>{value.title}</h3>
+              </div>
+              <p>{value.description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section className="life-beyond" aria-labelledby="life-beyond-title">
         <header className="about-section-heading">
-          <p className="about-section-label">02. OUTSIDE OF WORK</p>
+          <p className="about-section-label">03. OUTSIDE OF WORK</p>
           <span className="about-section-heading-line" aria-hidden="true" />
           <h2 id="life-beyond-title">Life beyond code</h2>
         </header>

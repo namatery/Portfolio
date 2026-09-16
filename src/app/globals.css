@@ -902,6 +902,55 @@ a {
   margin-top: 22px;
 }
 
+.personal-values {
+  margin-top: 112px;
+  padding-top: 112px;
+  border-top: 1px solid var(--border);
+}
+
+.personal-values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px 64px;
+  margin: 56px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.personal-value-note {
+  padding: 28px 0 8px;
+  border-top: 1px solid var(--border);
+}
+
+.personal-value-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.personal-value-icon {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  color: var(--accent);
+}
+
+.personal-value-note h3 {
+  margin: 0;
+  font-size: var(--font-size-title);
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.personal-value-note p {
+  max-width: 440px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: var(--font-size-body-large);
+  line-height: 1.62;
+}
+
 .lead {
   max-width: 720px;
   margin: 30px 0 0;
@@ -1422,6 +1471,15 @@ a {
 }
 
 @media (max-width: 800px) {
+  .personal-values {
+    margin-top: 84px;
+    padding-top: 84px;
+  }
+
+  .personal-values-grid {
+    gap: 32px;
+  }
+
   .hero {
     min-height: auto;
     grid-template-columns: 1fr;
@@ -1560,6 +1618,21 @@ a {
 }
 
 @media (max-width: 540px) {
+  .personal-values {
+    margin-top: 66px;
+    padding-top: 68px;
+  }
+
+  .personal-values-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 38px;
+  }
+
+  .personal-value-note p {
+    font-size: var(--font-size-body);
+  }
+
   .container-shell,
   .article-shell {
     width: min(100% - 32px, 1120px);
